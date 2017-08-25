@@ -12,5 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $model = \App\Product::all();
+    return view('welcome', ['model' => $model]);
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/profile', 'HomeController@profile')->name('profile');
+
+Route::get('/logout', 'HomeController@logout')->name('logout');
+
+Route::get('/basket', 'BasketController@getBasket')->name('basket');
+
+Route::get('/order/{id}', 'BasketController@addToBasket')->name('addToBasket');
