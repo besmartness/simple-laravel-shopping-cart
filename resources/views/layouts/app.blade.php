@@ -26,7 +26,7 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ route('basket') }}"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping-cart <span class="badge">@if(\Session::has('basket')){{ \Session::get('basket')->totalQTY}}@else {{ 0 }}@endif</span></a></li>
+                <li><a href="{{ route('basket') }}"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping-cart <span class="badge" style="background-color: red;">@if(\Session::has('basket')){{ count(\Session::get('basket'))}}@else {{ 0 }}@endif</span></a></li>
                 <li class="dropdown">
                     @if(Auth::check())
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-user"></span> {{ Auth::user()->name }}
@@ -55,5 +55,6 @@
     <!-- Scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+@yield('script')
 </body>
 </html>

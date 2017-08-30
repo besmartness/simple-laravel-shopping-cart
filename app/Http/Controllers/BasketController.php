@@ -2,35 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Basket;
 use App\Product;
-use Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BasketController extends Controller
 {
 
-    public function index()
-    {
-
-    }
-
     public function addToBasket(Request $request, $id)
     {
 
-        $product = Product::find($id);
-        $current_basket = Session::has('profile') ? Session::get('profile') : $current_basket = null;
-        $basket = new Basket($current_basket);
-        $basket->add($product, $product->id);
-        $request->session()->put('profile', $basket);
+        if(\Session::has('basket')){
+
+            $basket = \Session::get('basket');
+            $basket[] =  Product::find($id);
+            \Session::put('basket', $basket);
+
+        }else{
+
+            $basket = array();
+            $basket[] =  Product::find($id);
+            \Session::put('basket', $basket);
+
+        }
         return redirect()->back();
 
     }
 
     public function getBasket()
     {
+       /* dd(\Session::get('basket'));*/
 
-       return view('profile.basket');
+        if(\Session::has('basket'))
+        {
+            return view('profile.basket');
 
+        }else{
+
+            return view('profile.basket');
+        }
     }
 }

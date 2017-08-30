@@ -40,4 +40,11 @@ class HomeController extends Controller
         }
         return redirect()-back();
     }
+
+    public function profile()
+    {
+
+        return view('profile.profile');
+
+    }
 }

@@ -20,10 +20,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/profile', 'HomeController@profile')->name('profile');
+Route::get('/profile', 'HomeController@profile')->name('profile')->middleware('auth');
 
 Route::get('/logout', 'HomeController@logout')->name('logout');
 
-Route::get('/basket', 'BasketController@getBasket')->name('basket');
+Route::get('/basket', 'BasketController@getBasket')->name('basket')->middleware('auth');
 
-Route::get('/order/{id}', 'BasketController@addToBasket')->name('addToBasket');
+Route::get('/order/{id}', 'BasketController@addToBasket')->name('addToBasket')->middleware('auth');

@@ -19,7 +19,7 @@ Laravel Shopping
                 <div class="caption">
                     <h3>{{ $item->title }}</h3>
                     <p>{{ $item->description }}</p>
-                    <p><a href="{{ route('addToBasket', ['id' => $item->id]) }}" class="btn btn-success" role="button">Sotib olish</a><span style="float: right;">{{ $item->price }} so'm</span></p>
+                    <p><a href="{{ route('addToBasket', ['id' => $item->id]) }}" @if(Auth::check()) {{ 'id="song"' }} @endif class="btn btn-success" role="button">Sotib olish</a><span style="float: right;">{{ $item->price }} so'm</span></p>
                 </div>
             </div>
         </div>
@@ -28,7 +28,18 @@ Laravel Shopping
 @endforeach
 </div>
 </div>
-
 </div>
 
+@endsection
+@section('script')
+
+    <script type="text/javascript">
+                @if(Session::has('basket'))
+
+        var path = "{{ asset('song.mp3') }}";
+        var snd = new Audio(path);
+        snd.play();
+        @endif
+
+    </script>
 @endsection
