@@ -19,28 +19,6 @@ class HomeController extends Controller
         return view('home');
     }
 
-
-    public function addToBasket(Request $request,$id)
-    {
-
-        if($request->session()->has('profile')){
-
-            $basket = $request->session()->get('profile');
-            $basket = array_push($basket, $id);
-            $request->session()->put('profile',$basket);
-            dd($request->session()->get('profile'));
-
-        }else{
-
-            $basket = array();
-            $basket = array_push($basket, $id);
-            $request->session()->put('profile',$basket);
-            dd($request->session()->get('profile'));
-
-        }
-        return redirect()-back();
-    }
-
     public function profile()
     {
 
