@@ -25,21 +25,8 @@ class BasketController extends Controller
             \Session::put('basket', $basket);
 
         }
+
         return redirect()->back();
 
-    }
-
-    public function getBasket()
-    {
-       /* dd(\Session::get('basket'));*/
-
-        if(\Session::has('basket'))
-        {
-            return view('profile.basket');
-
-        }else{
-
-            return view('profile.basket');
-        }
     }
 }

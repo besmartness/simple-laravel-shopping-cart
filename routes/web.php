@@ -24,6 +24,8 @@ Route::get('/profile', 'HomeController@profile')->name('profile')->middleware('a
 
 Route::get('/logout', 'HomeController@logout')->name('logout');
 
-Route::get('/basket', 'BasketController@getBasket')->name('basket')->middleware('auth');
+Route::get('/basket', function (){
+    return view('profile.basket');
+})->name('basket')->middleware('auth');
 
 Route::get('/order/{id}', 'BasketController@addToBasket')->name('addToBasket')->middleware('auth');
