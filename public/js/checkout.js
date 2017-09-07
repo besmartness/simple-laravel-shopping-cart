@@ -1,0 +1,1 @@
+Stripe.setPublishableKey('here your public keys');

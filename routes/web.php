@@ -29,3 +29,5 @@ Route::get('/basket', function (){
 })->name('basket')->middleware('auth');
 
 Route::get('/order/{id}', 'BasketController@addToBasket')->name('addToBasket')->middleware('auth');
+
+Route::post('payment', 'BasketController@pay')->name('pay')->middleware('auth');
